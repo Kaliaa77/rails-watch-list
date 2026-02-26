@@ -1,0 +1,9 @@
+<%= render "nav" %>
+<div class= "banner">
+<h1>Liste des genres de film</h1>
+</div>
+<div>
+  <% @lists.each do |list|%>
+  <h5><%= link_to list.name, list_path(list)%></h5>
+  <% end %>
+</div>

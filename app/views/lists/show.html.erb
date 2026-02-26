@@ -1,0 +1,20 @@
+<h1> Liste des films du genre : <%= @list.name %> </h1>
+
+
+<div class="card" style="width: 18rem;">
+    <% @movies.each do |movie|%>
+      <% bookmark = Bookmark.find_by(list_id: @list, movie_id: movie) %>
+      <img src="<%= movie.poster_url %>" class="card-img-top" alt="...">
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Titre :</strong> <%= movie.title %></li>
+          <li class="list-group-item"><strong>Description :</strong> <%= movie.overview %></li>
+          <li class="list-group-item"><strong>Note :</strong> <%= movie.rating %>⭐ <strong></li>
+          <li class="list-group-item"><strong>Commentaire :</strong> <%= bookmark.comment %> <strong> <%= link_to "Supprimer ce commentaire", list_bookmarks_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Est-ce que tu veux vraiment supprimer ce commentaire ?"} %></li>
+        </ul>
+      </div>
+    <% end %>
+</div>
+
+<%= link_to "Retourner à la liste des genres de film", lists_path %>
+<%= link_to "Ecrire un commentaire à propos d'un film", new_list_bookmark_path(@list) %>
