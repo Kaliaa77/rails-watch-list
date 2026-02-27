@@ -1,10 +1,10 @@
-  <div class="container col-lg-4 mt-4">
-    <h3>Création d'un commentaire : </h3>
+<div class="container col-lg-4 mt-4">
+    <h3 class= "mb-5">Création d'un commentaire : </h3>
 
   <%= simple_form_for [@list, @bookmark] do |f| %>
 		<%= f.input :comment %>
     <%= f.association :movie %>
 		<%= f.button :submit, class: "text-white btn btn-secondary" %>
 	<% end %>
+<%= link_to "Retourner à la liste des genres de film", lists_path, class: "btn btn-outline-danger text-decoration-none rounded-pill mt-5" %>
 </div>
-<%= link_to "Retourner à la liste des genres de film", lists_path %>
