@@ -11,13 +11,23 @@
 
     <div class="d-flex flex-wrap justify-content-evenly">
         <% @lists.each do |list|%>
-          <div class="card-film rounded-5 mb-5" style="width: 18rem;">
+          <% if list.photo.attached? %>
+          <div class="card-film rounded-5 mb-5" style="width: 18rem; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key %>')">
             <div class="card-body">
               <ul class="list-group list-group-flush">
                 <%= link_to list.name, list_path(list), class: "text-decoration-none fs-3 text-white text-center fw-bold"%>
               </ul>
             </div>
           </div>
+          <% else %>
+            <div class="card-film rounded-5 mb-5" style="width: 18rem; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path('Pelicule.jpg')%>');">
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <%= link_to list.name, list_path(list), class: "text-decoration-none fs-3 text-white text-center fw-bold"%>
+              </ul>
+            </div>
+          </div>
+          <% end %>
         <% end %>
       </div>
     </div>
